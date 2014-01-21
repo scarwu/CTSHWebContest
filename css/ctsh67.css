@@ -57,6 +57,8 @@ body {
 
 body {
 	background-color: #efefef;
+	min-width: 1000px;
+	position: relative;
 }
 
 a {
@@ -73,57 +75,74 @@ a:active {
 }
 
 header {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	color: #ffffff;
 	text-align: center;
 	padding: 20px 20px 50px 20px;
-	background-color: #0f0f0f;
-	min-height: 450px;
+	background-image: url("/img/bg005.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: 0 -100px;
+	/*min-height: 450px;*/
 	overflow: hidden;
-	position: relative;
+	position: fixed;
+	z-index: 0;
 }
 
 header .title,
 header .slogan1,
 header .slogan2 {
-	text-shadow: 0 1px 0 #777,
-				 0 2px 0 #777,
-				 0 3px 0 #777,
-				 0 4px 0 #777,
-				 0 5px 0 #777,
+	text-shadow: 0 1px 0 #6f6f6f,
+				 0 2px 0 #6f6f6f,
+				 0 3px 0 #6f6f6f,
+				 0 4px 0 #6f6f6f,
+				 0 5px 0 #6f6f6f,
 				 0 6px 1px rgba(0,0,0,.1),
 				 0 0 5px rgba(0,0,0,.1),
 				 0 1px 3px rgba(0,0,0,.3),
 				 0 3px 5px rgba(0,0,0,.2),
 				 0 5px 10px rgba(0,0,0,.25),
 				 0 10px 10px rgba(0,0,0,.2),
-				 0 20px 20px rgba(0,0,0,.15);
+				 0 20px 20px rgba(0,0,0,.5);
 }
 
 header > h1 {
 	font-size: 3em;
 	margin: 0;
-	margin-top: 50px;
-	-webkit-transform: skew(-5deg,-5deg);
+	-webkit-transform: skew(-5deg, -5deg);
+	-moz-transform: skew(-5deg, -5deg);
+	-ms-transform: skew(-5deg, -5deg);
+	-o-transform: skew(-5deg, -5deg);
+	transform: skew(-5deg, -5deg);
 }
 
 header > h2 {
 	font-size: 6.5em;
 	margin: 0;
 	-webkit-transform: skew(10deg, 5deg);
+	-moz-transform: skew(10deg, 5deg);
+	-ms-transform: skew(10deg, 5deg);
+	-o-transform: skew(10deg, 5deg);
+	transform: skew(10deg, 5deg);
 }
 
 header .title {
+	top: 10%;
 	position: relative;
 }
 
 header .slogan1 {
 	left: -100px;
-	margin-top: 50px;
+	top: 25%;
 	position: relative;
 }
 
 header .slogan2 {
 	left: 100px;
+	top: 25%;
 	position: relative;
 }
 
@@ -131,15 +150,26 @@ nav {
 	padding: 25px;
 	text-align: center;
 	font-size: 1.5em;
+	position: fixed;
+	left: 0;
+	top: 50%;
+	background-color: #efefef;
+	height: 200px;
+	margin-top: -100px;
+	z-index: 2000;
 }
 
 nav a {
+	display: block;
 	text-decoration: none;
-	margin: 0 15px;
+	padding: 0 20px;
+	height: 40px;
+	line-height: 40px;
 }
 
 .block {
-
+	position: relative;
+	z-index: 100;
 }
 
 .block:nth-child(odd) {
@@ -165,7 +195,7 @@ nav a {
 }
 
 footer {
-	padding: 15px;
+	padding: 50px 0;
 	text-align: center;
 }
 
@@ -176,6 +206,7 @@ footer > span {
 footer > span:nth-child(1) {
 	color: #3f3f3f;
 	font-size: 1em;
+	padding-top: 12px;
 }
 
 footer > span:nth-child(2),
