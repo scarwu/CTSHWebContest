@@ -4,7 +4,7 @@ window.currentBg = 0;
 
 function headerResize () {
 	$('body').css('padding-top', $(window).height() + 'px');
-	$('div[class=block]').css('height', $(window).height() + 'px');
+	$('div[class=block]').css('min-height', $(window).height() + 'px');
 }
 
 var handle = {
@@ -14,34 +14,44 @@ var handle = {
 		$('header .slogan2').css('left', (t * 1.2) + 'px');
 	},
 	changeBG: function (t, w) {
-		var current = parseInt((t + w) / w / 2);
+		var current = 0;
 		var BGConfig = [{
 			bg: 'bg5.jpg',
-			init: '0 -' + (w * 0.1) + 'px',
-			formula: t * 0.1 - (w * 0.1)
+			init: -100,
+			formula: -100 + (100 / w)
 		}, {
 			bg: 'bg3.jpg',
-			init: '0 -' + (w * 0.2) + 'px',
-			formula: (t - w) * 0.1 - (w * 0.2)
+			init: -100,
+			formula: -100
 		}, {
 			bg: 'bg6.jpg',
-			init: '0 -' + (w * 0.2) + 'px',
-			formula: (t - 3 * w) * 0.1 - (w * 0.2)
+			init: -100,
+			formula: -100
 		}, {
 			bg: 'bg4.jpg',
-			init: '0 -' + (w * 0.2) + 'px',
-			formula: (t - 5 * w) * 0.1 - (w * 0.2)
+			init: -100,
+			formula: -100
 		}];
+		
+		var block = $('.block:nth-child(even)');
+		for (var i = block.length - 1;i >= 0;i--) {
+			var top = block.eq(i).position().top - (t + w);
+			if (top < 0) {
+				current = i + 1;
+				break;
+			}
+		}
 
 		$('header').css('background-position', '0 ' + BGConfig[current].formula + 'px');
 
 		if (window.currentBg != current && current in BGConfig) {
 			window.currentBg = current;
+			console.log(current);
 
 			var path = 'url(\'../img/' + BGConfig[current].bg + '\')';
 			$('header').css({
 				'background-image': path,
-				'background-position': BGConfig[current].init
+				'background-position': '0 ' + BGConfig[current].init + 'px'
 			});
 		}
 	}

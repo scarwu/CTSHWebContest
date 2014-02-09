@@ -233,10 +233,10 @@ nav span:hover {
 }
 
 .inner_scroll {
-	overflow-y: auto;
+	/*overflow-y: auto;
 	position: absolute;
 	top: 0;
-	bottom: 0;
+	bottom: 0;*/
 }
 
 li {
